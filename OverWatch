@@ -1,0 +1,30 @@
+import java.util.Arrays;
+import java.util.Random;
+//对象数组保存的是引用，基本类型数组保存的是数值 2者区别
+public class OverWatch {
+	private static Random rand = new Random(47);
+	static final String[] HEROES = {"death","soldier76","banzang","liekong","faji",
+		"saozhu","yuanshi","smartBeauty","angel","CreazyMouse","Anna","DJ","Bigchui"};
+	public static String[] heroesSet(){
+		String[] result = new String[6];
+		boolean[] picked = new boolean[HEROES.length];
+		for(int i = 0; i < 6; i++){
+			int t;
+			do
+				t=rand.nextInt(HEROES.length);
+			while(picked[t]);
+			{
+				result[i] = HEROES[t];
+				picked[t] = true;
+			}
+			
+		}
+		return result;
+	}
+	public static void main(String[] args) {
+		for(int i = 0; i<2 ; i++){
+//			System.out.println(heroesSet());//string 数组保存的是引用
+			System.out.println(Arrays.toString(heroesSet()));
+		}
+	}
+}
